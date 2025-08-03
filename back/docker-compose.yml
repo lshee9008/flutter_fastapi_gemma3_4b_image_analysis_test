@@ -1,7 +1,6 @@
-version: '3.8'
-
+version: '3'
 services:
-  fastapi:
+  app:
     build: .
     ports:
       - "8000:8000"
@@ -13,11 +12,11 @@ services:
       - tutorial-net
 
   ollama:
-    build: ./ollama
+    build: ollama
     ports:
-      - "11434:11434"
+      - 11434:11434
     volumes:
-      - tutorial-vol:/root/.ollama
+      - tutorial-vol:/ollama
     networks:
       - tutorial-net
     entrypoint: ["/usr/bin/bash", "/pull-gemma3.sh"]

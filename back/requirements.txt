@@ -7,3 +7,4 @@ httpx==0.23.3 #youtube-search-python 할 때 중요함
 pillow
 pytesseract
 python-multipart
+aiohttp
