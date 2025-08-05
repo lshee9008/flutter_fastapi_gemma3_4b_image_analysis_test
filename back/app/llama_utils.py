@@ -31,10 +31,10 @@ async def analyze_receipt(image_path: str) -> tuple[str, str]:
                 # 정규표현식 추출
                 import re
                 date_match = re.search(r"날짜\s*[:\-]?\s*(\d{4}-\d{2}-\d{2})", output)
-                total_match = re.search(r"합계\s*[:\-]?\s*(\d+)", output)
+                total_match = re.search(r"합계\s*[:\-]?\s*([\d,]+)", output)
 
                 date = date_match.group(1).strip() if date_match else "날짜 추출 실패"
-                total = total_match.group(1).strip() if total_match else "합계 추출 실패"
+                total = total_match.group(1).replace(",", "").strip() if total_match else "합계 추출 실패"
 
                 return date, total
 
